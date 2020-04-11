@@ -17,11 +17,11 @@ export default {
   },
   computed: {
     formatAuthors() {
-      let formattedAuth = ''
       if (this.book.volumeInfo.authors) {
-        formattedAuth = this.book.volumeInfo.authors.join(', ')
+        return this.book.volumeInfo.authors.join(', ')
+      } else {
+        return 'No known author'
       }
-      return formattedAuth 
     }
   }
 }
