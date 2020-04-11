@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>Search for a book</h3>
+    <h3>Search on title</h3>
     <input @input="onInput" type="text" />
   </div>
 </template>
@@ -16,5 +16,12 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+  input {
+    width: 75%;
+  }
+  div {
+    text-align: center;
+    margin: 20px;
+  }
 </style>

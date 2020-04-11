@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul class="list-group">
     <BookListItem 
       v-for="book in books" 
       :book="book"

@@ -1,6 +1,6 @@
 <template>
-  <li>
-    <!-- {{ book.volumeInfo.imageLinks.smallThumbnail }} -->
+  <li class="list-group-item">
+    <img :src="thumbnailURL" :alt="book.volumeInfo.title" />
     {{ book.volumeInfo.title }}
     -
     {{ formatAuthors }}
@@ -11,12 +11,10 @@
 export default {
   name: 'BookListItem',
   props: ['book'],
-  data() {
-    return {
-      authors: ''
-    }
-  },
   computed: {
+    thumbnailURL() {
+      return this.book.volumeInfo.imageLinks.thumbnail
+    },
     formatAuthors() {
       if (this.book.volumeInfo.authors) {
         return this.book.volumeInfo.authors.join(', ')
