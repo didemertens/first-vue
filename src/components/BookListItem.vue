@@ -1,9 +1,11 @@
 <template>
-  <li class="list-group-item">
-    <img :src="thumbnailURL" :alt="book.volumeInfo.title" />
-    {{ book.volumeInfo.title }}
-    -
-    {{ formatAuthors }}
+  <li class="list-group-item media">
+    <img class="mr-3" :src="thumbnailURL" :alt="book.volumeInfo.title" />
+    <div class="media-body">
+      {{ book.volumeInfo.title }}
+      -
+      {{ formatAuthors }}
+    </div>
   </li>
 </template>
 
@@ -25,3 +27,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  li {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  li:hover {
+    background-color: #eee;
+  }
+</style>
