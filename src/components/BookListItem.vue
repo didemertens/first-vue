@@ -1,5 +1,6 @@
 <template>
   <li>
+    <!-- {{ book.volumeInfo.imageLinks.smallThumbnail }} -->
     {{ book.volumeInfo.title }}
     -
     {{ formatAuthors }}
