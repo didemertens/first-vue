@@ -31,8 +31,8 @@ export default {
     }
   },
   methods: {
-    onTermChange(searchTerm) {
-      axios.get(`https://www.googleapis.com/books/v1/volumes?q=intitle:${searchTerm}&key=${booksKey}`)
+    onTermChange(searchTerm, searchFilter) {
+      axios.get(`https://www.googleapis.com/books/v1/volumes?q=in${searchFilter}:${searchTerm}&key=${booksKey}`)
       .then(response => this.books = response.data.items)
     },
     onBookSelect(book) {
