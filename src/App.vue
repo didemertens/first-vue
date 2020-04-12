@@ -1,13 +1,18 @@
 <template>
   <div>
-    <div class="jumbotron">
-      <h1>Find books</h1>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container header-container">
+        <h1>Find books</h1>
+        <SearchBar @termChange="onTermChange"></SearchBar>
+      </div>
     </div>
     <div class="container">
-      <SearchBar @termChange="onTermChange"></SearchBar>
-      <div class="row">
+      <div v-if="books.length > 0" class="row">
         <BookList @bookSelect="onBookSelect" :books="books"></BookList>
         <BookDetail :book="selectedBook"></BookDetail>
+      </div>
+      <div v-else>
+        <h5>Search for a book above!</h5>
       </div>
     </div>
   </div>
@@ -49,7 +54,11 @@ export default {
 
 <style scoped>
   .jumbotron {
-    background-color: rgb(245, 245, 245);
+    background-image: url("https://static.standard.co.uk/s3fs-public/thumbnails/image/2020/03/02/15/wpf-longlist-main.jpg");
     text-align: center;
+    height: 45vh;
+  }
+  .header-container {
+    margin-top: -5vh;
   }
 </style>
