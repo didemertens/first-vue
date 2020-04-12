@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <SearchBar @termChange="onTermChange"></SearchBar>
-    <BookList :books="books"></BookList>
+    <BookList @bookSelect="onBookSelect" :books="books"></BookList>
   </div>
 </template>
 
@@ -27,6 +27,9 @@ export default {
     onTermChange(searchTerm) {
       axios.get(`https://www.googleapis.com/books/v1/volumes?q=intitle:${searchTerm}&key=${booksKey}`)
       .then(response => this.books = response.data.items)
+    },
+    onBookSelect(book) {
+      console.log(book.volumeInfo)
     }
   }
 }

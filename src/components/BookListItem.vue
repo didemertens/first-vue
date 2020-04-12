@@ -1,5 +1,5 @@
 <template>
-  <li class="list-group-item media">
+  <li class="list-group-item media" @click="onBookSelect">
     <img class="mr-3" :src="thumbnailURL" :alt="book.volumeInfo.title" />
     <div class="media-body">
       {{ book.volumeInfo.title }}
@@ -15,7 +15,11 @@ export default {
   props: ['book'],
   computed: {
     thumbnailURL() {
-      return this.book.volumeInfo.imageLinks.thumbnail
+      if (this.book.volumeInfo.imageLinks) {
+        return this.book.volumeInfo.imageLinks.thumbnail
+      } else {
+        return 'No image'
+      }
     },
     formatAuthors() {
       if (this.book.volumeInfo.authors) {
@@ -23,6 +27,11 @@ export default {
       } else {
         return 'No known author'
       }
+    }
+  },
+  methods: {
+    onBookSelect() {
+      this.$emit('bookSelect', this.book)
     }
   }
 }
