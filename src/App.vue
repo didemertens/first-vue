@@ -1,9 +1,14 @@
 <template>
-  <div class="container">
-    <SearchBar @termChange="onTermChange"></SearchBar>
-    <div class="row">
-      <BookList @bookSelect="onBookSelect" :books="books"></BookList>
-      <BookDetail :book="selectedBook"></BookDetail>
+  <div>
+    <div class="jumbotron">
+      <h1>Find books</h1>
+    </div>
+    <div class="container">
+      <SearchBar @termChange="onTermChange"></SearchBar>
+      <div class="row">
+        <BookList @bookSelect="onBookSelect" :books="books"></BookList>
+        <BookDetail :book="selectedBook"></BookDetail>
+      </div>
     </div>
   </div>
 </template>
@@ -41,3 +46,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .jumbotron {
+    background-color: rgb(245, 245, 245);
+    text-align: center;
+  }
+</style>
