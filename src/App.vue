@@ -1,8 +1,10 @@
 <template>
   <div class="container">
     <SearchBar @termChange="onTermChange"></SearchBar>
-    <BookDetail :book="selectedBook"></BookDetail>
-    <BookList @bookSelect="onBookSelect" :books="books"></BookList>
+    <div class="row">
+      <BookList @bookSelect="onBookSelect" :books="books"></BookList>
+      <BookDetail :book="selectedBook"></BookDetail>
+    </div>
   </div>
 </template>
 
