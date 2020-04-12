@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <SearchBar @termChange="onTermChange"></SearchBar>
+    <BookDetail :book="selectedBook"></BookDetail>
     <BookList @bookSelect="onBookSelect" :books="books"></BookList>
   </div>
 </template>
@@ -10,17 +11,21 @@ import axios from 'axios'
 
 import SearchBar from './components/SearchBar'
 import BookList from './components/BookList'
+import BookDetail from './components/BookDetail'
+
 const booksKey = process.env.VUE_APP_BOOKS_KEY
 
 export default {
   name: 'App',
   components: {
     SearchBar,
-    BookList
+    BookList,
+    BookDetail
   },
   data() {
     return {
-      books: []
+      books: [],
+      selectedBook: null
     }
   },
   methods: {
@@ -29,7 +34,7 @@ export default {
       .then(response => this.books = response.data.items)
     },
     onBookSelect(book) {
-      console.log(book.volumeInfo)
+      this.selectedBook = book
     }
   }
 }
